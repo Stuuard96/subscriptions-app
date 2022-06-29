@@ -1,0 +1,22 @@
+[
+  {
+    "type": "Estándar",
+    "price": 29,
+    "description": "Lorem ipsum dolor sit amet, consectetur sadipiscing elit, sed diam monumy eirmod",
+    "pack": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "Premium",
+    "price": 59,
+    "description": "Lorem ipsum dolor sit amet, consectetur sadipiscing elit, sed diam monumy eirmod",
+    "pack": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+]
