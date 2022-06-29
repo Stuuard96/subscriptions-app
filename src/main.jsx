@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Subscripcion } from "./Subscripcion";
-import "./index.scss";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { SubscripcionDatos } from "./Subscripcion/pages/SubscripcionDatos";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Subscripcion />
+    <SubscripcionDatos />
   </React.StrictMode>
 );

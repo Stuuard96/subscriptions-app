@@ -1,0 +1,41 @@
+/* * {
+  padding: 0;
+  margin: 0;
+} */
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /*1 rem = 10px*/
+}
+
+.text__opacity {
+  opacity: 0.3;
+}
+
+.form__datos {
+  padding: 1rem;
+  background-color: aqua;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------- Header datos ------------------------------- */
+.header__datos {
+  background: rgba(0, 0, 0, 0.822);
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.header__datos h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.header__datos i {
+  font-size: 2.5rem;
+}
