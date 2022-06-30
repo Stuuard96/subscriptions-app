@@ -8,6 +8,11 @@ html {
   font-size: 62.5%; /*1 rem = 10px*/
 }
 
+/* body {
+  min-height: 100vh !important;
+  overflow: hidden !important;
+} */
+
 .text__opacity {
   opacity: 0.3;
 }
@@ -22,7 +27,12 @@ html {
   width: 100% !important;
 }
 
-.btn {
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn__datos {
   border: 0;
   background: rgba(0, 0, 0, 0.822) !important;
   color: #fff !important;
@@ -68,4 +78,41 @@ html {
   max-width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* ------------------------- Footer Datos --------------------------- */
+.footer {
+  cursor: pointer;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-bottom: 0px;
+}
+.footer__container {
+  padding: 1rem 3.5rem;
+}
+
+.footer__principal {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.footer__secundario {
+  font-size: 1.1rem !important;
+  max-height: 0;
+  opacity: 0;
+  /* transform: scaleY(0.5); */
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+.footer__toggle {
+  /* transform: scaleY(1); */
+  opacity: 1;
+  max-height: 500px;
+  /* transition: all 5s ease; */
 }

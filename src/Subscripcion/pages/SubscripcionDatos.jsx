@@ -53,117 +53,118 @@ export const SubscripcionDatos = () => {
   const { handleChange, handleFocus, handleSubmit, values, errors } = useForm();
 
   return (
-    <section className="section__datos">
-      <HeaderDatos />
-      <div className="datos__tarjeta">
-        <Cards
-          cvc={values.cardSecurityCode}
-          expiry={values.cardExpiration}
-          focused={values.focus}
-          name={values.cardName}
-          number={values.cardNumber}
-        />
-      </div>
-
-      <Form className="form__datos" onSubmit={handleSubmit}>
-        <div className="datos__container">
-          <Form.Group className="form-group">
-            <Form.Label className="fw-bold m-0" htmlFor="cardName">
-              Nombres y Apellidos
-            </Form.Label>
-            <Form.Control
-              className="mb-2 fs-5"
-              id="cardName"
-              name="cardName"
-              type="text"
-              maxLength="40"
-              value={values.cardName}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              isValid={errors.cname}
-              autoFocus
-            />
-          </Form.Group>
-          <Form.Group className="form-group">
-            <Form.Label className="fw-bold m-0" htmlFor="number">
-              Numero de tarjeta
-            </Form.Label>
-            <Form.Control
-              className="mb-2 fs-5"
-              id="cardNumber"
-              name="cardNumber"
-              type="number"
-              // onInput={(e) => (e.target.value = e.target.value.slice(0, 20))}
-              pattern="[\d| ]{16,22}"
-              value={values.cardNumber}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              isValid={errors.cnumber}
-            />
-          </Form.Group>
-
-          <Row>
-            <Col>
-              <Form.Group className="form-group">
-                <Form.Label className="fw-bold m-0" htmlFor="cardExpiration">
-                  F. Expira
-                </Form.Label>
-                <Form.Control
-                  className="mb-2 fs-5"
-                  type="tel"
-                  name="cardExpiration"
-                  id="cardExpiration"
-                  pattern="\d\d/\d\d"
-                  value={values.cardExpiration}
-                  onChange={handleChange}
-                  onFocus={handleFocus}
-                  isValid={errors.cexp}
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="form-group">
-                <Form.Label className="fw-bold m-0" htmlFor="cvc">
-                  CVC
-                </Form.Label>
-                <Form.Control
-                  className="mb-2 fs-5"
-                  type="number"
-                  name="cardSecurityCode"
-                  id="cardSecurityCode"
-                  value={values.cardSecurityCode}
-                  onChange={handleChange}
-                  onFocus={handleFocus}
-                  isValid={errors.ccvv}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Button
-            id="validateButton"
-            type="submit"
-            className="btn fw-bold fs-5 py-3 my-4"
-          >
-            Pagar S/. {currentPlan.price}
-          </Button>
-          {errors.show ? (
-            <Alert
-              id="alertMessage"
-              className="m-0 fw-bold"
-              variant={errors.variant}
-              show={errors.show}
-            >
-              {errors.message}
-            </Alert>
-          ) : null}
+    <>
+      <section className="section__datos">
+        <HeaderDatos />
+        <div className="datos__tarjeta">
+          <Cards
+            cvc={values.cardSecurityCode}
+            expiry={values.cardExpiration}
+            focused={values.focus}
+            name={values.cardName}
+            number={values.cardNumber}
+          />
         </div>
-      </Form>
 
+        <Form className="form__datos" onSubmit={handleSubmit}>
+          <div className="datos__container">
+            <Form.Group className="form-group">
+              <Form.Label className="fw-bold m-0" htmlFor="cardName">
+                Nombres y Apellidos
+              </Form.Label>
+              <Form.Control
+                className="mb-2 fs-5"
+                id="cardName"
+                name="cardName"
+                type="text"
+                maxLength="40"
+                value={values.cardName}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                isValid={errors.cname}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="form-group">
+              <Form.Label className="fw-bold m-0" htmlFor="number">
+                Numero de tarjeta
+              </Form.Label>
+              <Form.Control
+                className="mb-2 fs-5"
+                id="cardNumber"
+                name="cardNumber"
+                type="number"
+                // onInput={(e) => (e.target.value = e.target.value.slice(0, 20))}
+                pattern="[\d| ]{16,22}"
+                value={values.cardNumber}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                isValid={errors.cnumber}
+              />
+            </Form.Group>
+
+            <Row>
+              <Col>
+                <Form.Group className="form-group">
+                  <Form.Label className="fw-bold m-0" htmlFor="cardExpiration">
+                    F. Expira
+                  </Form.Label>
+                  <Form.Control
+                    className="mb-2 fs-5"
+                    type="tel"
+                    name="cardExpiration"
+                    id="cardExpiration"
+                    pattern="\d\d/\d\d"
+                    value={values.cardExpiration}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    isValid={errors.cexp}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="form-group">
+                  <Form.Label className="fw-bold m-0" htmlFor="cvc">
+                    CVC
+                  </Form.Label>
+                  <Form.Control
+                    className="mb-2 fs-5"
+                    type="number"
+                    name="cardSecurityCode"
+                    id="cardSecurityCode"
+                    value={values.cardSecurityCode}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    isValid={errors.ccvv}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Button
+              id="validateButton"
+              type="submit"
+              className="btn__datos fw-bold fs-5 py-3 my-4"
+            >
+              Pagar S/. {currentPlan.price}
+            </Button>
+            {errors.show ? (
+              <Alert
+                id="alertMessage"
+                className="m-0 fw-bold"
+                variant={errors.variant}
+                show={errors.show}
+              >
+                {errors.message}
+              </Alert>
+            ) : null}
+          </div>
+        </Form>
+      </section>
       <FooterDatos
         changePlan={changePlan}
         currentPlan={currentPlan}
         otherPlan={otherPlan}
       />
-    </section>
+    </>
   );
 };
