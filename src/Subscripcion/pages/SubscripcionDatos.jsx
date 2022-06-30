@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import useForm from "../hooks/useForm";
+import Cards from "react-credit-cards";
+import { Button, Form, Alert, Row, Col } from "react-bootstrap";
 import dataPlan from "../../data/plan.json";
 import dataPackPlan from "../../data/packPlan.json";
 import { HeaderDatos } from "../components/HeaderDatos";
+import { FooterDatos } from "../components/FooterDatos";
 
 export const SubscripcionDatos = () => {
   const plan = dataPlan;
@@ -46,48 +50,120 @@ export const SubscripcionDatos = () => {
     setDates({ currentPlan: otherPlan, otherPlan: currentPlan });
   };
 
+  const { handleChange, handleFocus, handleSubmit, values, errors } = useForm();
+
   return (
     <section className="section__datos">
       <HeaderDatos />
-      <form className="form__datos">
-        <label htmlFor="">Nombres y Apellidos</label>
-        <input type="text" />
-        <label htmlFor="">Numero de tarjeta</label>
-        <input type="text" />
-        <label htmlFor="">F. Expira</label>
-        <input type="text" />
-        <label htmlFor="">CVC</label>
-        <input type="text" />
-        <button>Pagar S/. {currentPlan.price}</button>
-      </form>
-      <div className="footer">
-        <div className="footer__principal">
-          <h5>Plan {currentPlan.type}</h5>
-          <h5>S/.{currentPlan.price} al mes</h5>
-        </div>
-        <div className="footer__secundario">
-          <p>{currentPlan.description}</p>
-          <ul className="fa-ul ml-4">
-            {currentPlan.descriptionPlan ? (
-              currentPlan.descriptionPlan.map(({ num, description }, i) => (
-                <li
-                  key={num}
-                  className={`${
-                    currentPlan.pack[i] !== num ? "text__opacity" : ""
-                  }`}
-                >
-                  {description}
-                </li>
-              ))
-            ) : (
-              <p>Esperando lista ...</p>
-            )}
-          </ul>
-        </div>
-        <button type="submit" onClick={changePlan}>
-          Cambiar a plan {otherPlan.type ? otherPlan.type : "Estándar"}
-        </button>
+      <div className="datos__tarjeta">
+        <Cards
+          cvc={values.cardSecurityCode}
+          expiry={values.cardExpiration}
+          focused={values.focus}
+          name={values.cardName}
+          number={values.cardNumber}
+        />
       </div>
+
+      <Form className="form__datos" onSubmit={handleSubmit}>
+        <div className="datos__container">
+          <Form.Group className="form-group">
+            <Form.Label className="fw-bold m-0" htmlFor="cardName">
+              Nombres y Apellidos
+            </Form.Label>
+            <Form.Control
+              className="mb-2 fs-5"
+              id="cardName"
+              name="cardName"
+              type="text"
+              maxLength="40"
+              value={values.cardName}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              isValid={errors.cname}
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="form-group">
+            <Form.Label className="fw-bold m-0" htmlFor="number">
+              Numero de tarjeta
+            </Form.Label>
+            <Form.Control
+              className="mb-2 fs-5"
+              id="cardNumber"
+              name="cardNumber"
+              type="number"
+              // onInput={(e) => (e.target.value = e.target.value.slice(0, 20))}
+              pattern="[\d| ]{16,22}"
+              value={values.cardNumber}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              isValid={errors.cnumber}
+            />
+          </Form.Group>
+
+          <Row>
+            <Col>
+              <Form.Group className="form-group">
+                <Form.Label className="fw-bold m-0" htmlFor="cardExpiration">
+                  F. Expira
+                </Form.Label>
+                <Form.Control
+                  className="mb-2 fs-5"
+                  type="tel"
+                  name="cardExpiration"
+                  id="cardExpiration"
+                  pattern="\d\d/\d\d"
+                  value={values.cardExpiration}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  isValid={errors.cexp}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="form-group">
+                <Form.Label className="fw-bold m-0" htmlFor="cvc">
+                  CVC
+                </Form.Label>
+                <Form.Control
+                  className="mb-2 fs-5"
+                  type="number"
+                  name="cardSecurityCode"
+                  id="cardSecurityCode"
+                  value={values.cardSecurityCode}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  isValid={errors.ccvv}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Button
+            id="validateButton"
+            type="submit"
+            className="btn fw-bold fs-5 py-3 my-4"
+          >
+            Pagar S/. {currentPlan.price}
+          </Button>
+          {errors.show ? (
+            <Alert
+              id="alertMessage"
+              className="m-0 fw-bold"
+              variant={errors.variant}
+              show={errors.show}
+            >
+              {errors.message}
+            </Alert>
+          ) : null}
+        </div>
+      </Form>
+
+      <FooterDatos
+        changePlan={changePlan}
+        currentPlan={currentPlan}
+        otherPlan={otherPlan}
+      />
     </section>
   );
 };

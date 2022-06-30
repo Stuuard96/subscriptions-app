@@ -12,12 +12,24 @@ html {
   opacity: 0.3;
 }
 
-.form__datos {
-  padding: 1rem;
-  background-color: aqua;
-  max-width: 50rem;
-  display: flex;
-  flex-direction: column;
+.rccs {
+  max-width: 290px !important;
+  width: 100% !important;
+}
+
+.rccs__card {
+  max-width: 290px !important;
+  width: 100% !important;
+}
+
+.btn {
+  border: 0;
+  background: rgba(0, 0, 0, 0.822) !important;
+  color: #fff !important;
+}
+
+.alert {
+  text-align: center;
 }
 
 /* --------------------------- Header datos ------------------------------- */
@@ -38,4 +50,22 @@ html {
 
 .header__datos i {
   font-size: 2.5rem;
+}
+
+/* -------------------------- Form Datos ------------------------------ */
+.datos__tarjeta {
+  background-color: rgb(235, 229, 229);
+  padding: 3rem 0;
+}
+.form__datos {
+  background-color: rgb(235, 229, 229);
+}
+
+.datos__container {
+  padding: 0 3.5rem 5rem;
+  margin: 0 auto;
+  width: 37rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 }

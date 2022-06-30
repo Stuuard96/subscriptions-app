@@ -1,7 +1,7 @@
 [
   {
     "type": "Estándar",
-    "price": 29.0,
+    "price": 29.00,
     "description": "Lorem ipsum dolor sit amet, consectetur sadipiscing elit, sed diam monumy eirmod",
     "pack": [
       1,
@@ -10,7 +10,7 @@
   },
   {
     "type": "Premium",
-    "price": 59.0,
+    "price": 59.00,
     "description": "Lorem ipsum dolor sit amet, consectetur sadipiscing elit, sed diam monumy eirmod",
     "pack": [
       1,
