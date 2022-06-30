@@ -8,10 +8,10 @@ html {
   font-size: 62.5%; /*1 rem = 10px*/
 }
 
-/* body {
+body {
   min-height: 100vh !important;
-  overflow: hidden !important;
-} */
+  background-color: rgb(235, 229, 229) !important;
+}
 
 .text__opacity {
   opacity: 0.3;
@@ -63,12 +63,10 @@ html {
 }
 
 /* -------------------------- Form Datos ------------------------------ */
+
 .datos__tarjeta {
-  background-color: rgb(235, 229, 229);
+  width: 100%;
   padding: 3rem 0;
-}
-.form__datos {
-  background-color: rgb(235, 229, 229);
 }
 
 .datos__container {
@@ -89,7 +87,6 @@ html {
   bottom: 0;
   right: 0;
   left: 0;
-  margin-bottom: 0px;
 }
 .footer__container {
   padding: 1rem 3.5rem;
@@ -103,16 +100,59 @@ html {
 
 .footer__secundario {
   font-size: 1.1rem !important;
-  max-height: 0;
-  opacity: 0;
-  /* transform: scaleY(0.5); */
   overflow: hidden;
-  transition: all 0.6s ease;
+  max-height: 0;
+  transition: max-height 0.8s cubic-bezier(0, 1, 0.5, 1) -0.1s;
 }
 
 .footer__toggle {
-  /* transform: scaleY(1); */
-  opacity: 1;
   max-height: 500px;
-  /* transition: all 5s ease; */
+  transition-timing-function: cubic-bezier(0, 0, 0.5, 0);
+}
+
+@media (min-width: 768px) {
+  .header__datos h2 {
+    font-size: 2rem;
+  }
+
+  .header__datos i {
+    font-size: 4rem;
+  }
+
+  .form-label {
+    font-size: 1.6rem;
+  }
+
+  .form-control {
+    padding: 0.6rem !important;
+    font-size: 1.5rem !important;
+  }
+
+  .content__datos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 10rem 3rem 0;
+  }
+
+  .datos__container {
+    padding: 0;
+  }
+
+  .datos__tarjeta {
+    max-width: 290px;
+  }
+
+  .btn {
+    padding: 2rem !important;
+    font-size: 1.7rem !important;
+  }
+
+  .footer__principal {
+    justify-content: space-around;
+  }
+  .footer__principal h5 {
+    font-size: 1.8rem !important;
+  }
 }

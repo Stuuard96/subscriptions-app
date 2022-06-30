@@ -53,9 +53,9 @@ export const SubscripcionDatos = () => {
   const { handleChange, handleFocus, handleSubmit, values, errors } = useForm();
 
   return (
-    <>
-      <section className="section__datos">
-        <HeaderDatos />
+    <section className="section__datos">
+      <HeaderDatos />
+      <div className="content__datos">
         <div className="datos__tarjeta">
           <Cards
             cvc={values.cardSecurityCode}
@@ -65,7 +65,6 @@ export const SubscripcionDatos = () => {
             number={values.cardNumber}
           />
         </div>
-
         <Form className="form__datos" onSubmit={handleSubmit}>
           <div className="datos__container">
             <Form.Group className="form-group">
@@ -73,7 +72,7 @@ export const SubscripcionDatos = () => {
                 Nombres y Apellidos
               </Form.Label>
               <Form.Control
-                className="mb-2 fs-5"
+                className="mb-2"
                 id="cardName"
                 name="cardName"
                 type="text"
@@ -90,7 +89,7 @@ export const SubscripcionDatos = () => {
                 Numero de tarjeta
               </Form.Label>
               <Form.Control
-                className="mb-2 fs-5"
+                className="mb-2"
                 id="cardNumber"
                 name="cardNumber"
                 type="number"
@@ -102,7 +101,6 @@ export const SubscripcionDatos = () => {
                 isValid={errors.cnumber}
               />
             </Form.Group>
-
             <Row>
               <Col>
                 <Form.Group className="form-group">
@@ -110,7 +108,7 @@ export const SubscripcionDatos = () => {
                     F. Expira
                   </Form.Label>
                   <Form.Control
-                    className="mb-2 fs-5"
+                    className="mb-2"
                     type="tel"
                     name="cardExpiration"
                     id="cardExpiration"
@@ -128,7 +126,7 @@ export const SubscripcionDatos = () => {
                     CVC
                   </Form.Label>
                   <Form.Control
-                    className="mb-2 fs-5"
+                    className="mb-2"
                     type="number"
                     name="cardSecurityCode"
                     id="cardSecurityCode"
@@ -159,12 +157,12 @@ export const SubscripcionDatos = () => {
             ) : null}
           </div>
         </Form>
-      </section>
+      </div>
       <FooterDatos
         changePlan={changePlan}
         currentPlan={currentPlan}
         otherPlan={otherPlan}
       />
-    </>
+    </section>
   );
 };
